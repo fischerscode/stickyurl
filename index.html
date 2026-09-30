@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>stickyurl</title>
+  <meta name="description" content="Ein statischer URL-Router mit zufälliger, im Browser gespeicherter Zielauswahl.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <noscript>
+    <div class="noscript">JavaScript wird für stickyurl benötigt.</div>
+  </noscript>
+
+  <main class="page" id="app" hidden>
+    <section class="card hero">
+      <h1>stickyurl</h1>
+      <p class="lead">
+        Mehrere URLs rein, ein Link raus. Beim ersten Aufruf wird ein Ziel zufällig gewählt und im Browser gespeichert.
+      </p>
+
+      <form id="router-form" novalidate>
+        <div class="section-heading">
+          <div>
+            <h2>URLs</h2>
+            <p>Eine URL pro Feld.</p>
+          </div>
+          <button type="button" class="secondary" id="add-url">+ URL</button>
+        </div>
+
+        <div id="url-list" class="url-list" aria-live="polite"></div>
+
+        <div class="actions">
+          <button type="submit" class="primary">Link erstellen</button>
+          <button type="button" class="secondary" id="clear-form">Leeren</button>
+        </div>
+
+        <p id="form-error" class="error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section class="card result" id="result" hidden>
+      <h2>Fertig</h2>
+      <div class="copy-row">
+        <input id="result-url" type="text" readonly aria-label="Erzeugter Weiterleitungslink">
+        <button type="button" class="primary" id="copy-link">Kopieren</button>
+      </div>
+      <p id="copy-status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card info">
+      <h2>Wie es funktioniert</h2>
+      <p>
+        Die Ziel-URLs stecken im Fragment hinter <code>#</code>. Die Auswahl passiert lokal im Browser und wird in
+        <code>localStorage</code> gespeichert. Derselbe Browser landet beim nächsten Aufruf desselben Links wieder beim selben Ziel.
+      </p>
+      <p class="muted">
+        Kein Backend, keine Accounts, keine Datenbank. Wird der Browser-Speicher gelöscht oder ein anderer Browser verwendet, wird neu gewählt.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer" hidden>
+    <a href="https://github.com/fischerscode/stickyurl" rel="noopener noreferrer">GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="impressum.html">Impressum</a>
+    <span aria-hidden="true">·</span>
+    <a href="datenschutz.html">Datenschutz</a>
+  </footer>
+</body>
+</html>

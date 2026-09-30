@@ -1,0 +1,162 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: light dark;
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #15171a;
+  --muted: #626b75;
+  --border: #d9dee5;
+  --accent: #1f6feb;
+  --accent-hover: #1558bb;
+  --danger-bg: #fff1f1;
+  --danger: #9b1c1c;
+  --code: #eef1f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --text: #f0f3f6;
+    --muted: #9da7b3;
+    --border: #30363d;
+    --accent: #4493f8;
+    --accent-hover: #6aa9fa;
+    --danger-bg: #2a1618;
+    --danger: #ffb4b4;
+    --code: #21262d;
+  }
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button, input { font: inherit; }
+a { color: var(--accent); }
+code {
+  background: var(--code);
+  padding: .08rem .32rem;
+  border-radius: .3rem;
+}
+
+.page {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 56px 0 24px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: clamp(22px, 4vw, 38px);
+  margin-bottom: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .05);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+h1 { font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.02; margin: 0 0 18px; }
+h2 { margin-top: 0; }
+.lead { color: var(--muted); font-size: 1.08rem; line-height: 1.65; max-width: 70ch; }
+.muted, .section-heading p { color: var(--muted); }
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 34px;
+}
+.section-heading h2, .section-heading p { margin-bottom: 5px; }
+
+.url-list { display: grid; gap: 10px; margin: 18px 0; }
+.url-row { display: grid; grid-template-columns: 1fr auto; gap: 9px; }
+input[type="url"], input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 10px;
+  outline: none;
+}
+input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
+
+button {
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.primary { background: var(--accent); color: white; }
+.primary:hover { background: var(--accent-hover); }
+.secondary, .icon-button {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.secondary:hover, .icon-button:hover { background: var(--code); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.copy-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+.error {
+  color: var(--danger);
+  background: var(--danger-bg);
+  border: 1px solid color-mix(in srgb, var(--danger) 28%, transparent);
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+.status { min-height: 1.4em; color: var(--muted); }
+.info li { margin: .5rem 0; line-height: 1.55; }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 16px 40px;
+  color: var(--muted);
+}
+.noscript { margin: 30px auto; width: min(800px, calc(100% - 32px)); }
+
+.legal {
+  width: min(800px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+.legal article {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: clamp(22px, 5vw, 42px);
+}
+.legal h1 { font-size: clamp(2rem, 5vw, 3rem); }
+.legal h2 { margin-top: 2rem; }
+.legal p, .legal li { line-height: 1.65; }
+.placeholder {
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  background: var(--code);
+  border-radius: 0 8px 8px 0;
+}
+.back { display: inline-block; margin-bottom: 20px; }
+
+@media (max-width: 650px) {
+  .page { padding-top: 24px; }
+  .section-heading { align-items: stretch; flex-direction: column; }
+  .url-row, .copy-row { grid-template-columns: 1fr; }
+  .icon-button { justify-self: start; }
+}
